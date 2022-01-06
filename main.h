@@ -15,8 +15,8 @@
 
 struct Move
 {
-    int x;
-    int y;
+    int row;
+    int col;
 };
 
 struct Game_cnts
@@ -51,3 +51,8 @@ int Change_matrix(int **matrix, int row, int col, char player);
 
 // Switch_player: change player by opposite player
 void Switch_player(char *player);
+
+/* print_sep_line: prints separator line (+---+---+---+---+)
+ * use in Print_matrix()
+ */
+void print_sep_line();
