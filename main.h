@@ -41,17 +41,20 @@ void Print_matrix(int **matrix);
  */
 void print_sep_line(void);
 
-// Count_free_spaces: count all FREE chars in matrix
+/* Count_free_spaces: count all FREE chars in matrix
+ * process some errors with input values
+ */
 int Count_free_spaces(int **matrix);
 
 // Get_move: get move from user and returns struct with move coordinats
-struct Move Get_move(void);
+struct Move Get_move(int**matrix);
 
 /* Change_matrix: replace matrix[row][col] by player const (P1 or P2)
  * end returning code of error
- * 1 - fine
+ * 1  - fine
  * -1 - wrong coordinats
  * -2 - cell is already used
+ * -3 - wrong player const
  */
 int Change_matrix(int **matrix, int row, int col, char player);
 

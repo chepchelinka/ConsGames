@@ -20,16 +20,18 @@ int main(int argc, char const *argv[])
 	
 	do 
 	{
-		// some one won
+		// someone won
 		if (play_again)
 		{
 			player = P1;
 			counters.games++;
 			counters.moves = 0;
+			play_again=0;
 		}
 
+		// if not first move (do loop peculiarities)
 		if (counters.moves > 0) {
-			Change_matrix(matrix, move.row, move.col, player); // processing errors in future
+			Change_matrix(matrix, move.row, move.col, player);
 
 			if (Win_checker(matrix) == 1) {
 				
@@ -57,7 +59,7 @@ int main(int argc, char const *argv[])
 
 		printf("Player-%c is moving\n", player);
 
-		move = Get_move();
+		move = Get_move(matrix);
 		counters.moves++;
 
 	} while (Count_free_spaces(matrix) > 0);
@@ -89,8 +91,10 @@ int Change_matrix(int **matrix, int row, int col, char player)
 	if (row >= SIZE || row < 0 ||                   // wrong coordinats
 		col >= SIZE || col < 0) {
 		
+		printf("Change_matrix: wrong coordinats\n");
 		return -1;
 	} else if (matrix[row][col] != FREE) {          // cell is already used
+		printf("Change_matrix: this cell is alredy used\n");
 		return -2;
 	} else if (player != P1 && player != P2){       // wrong player const
 		printf("Change_matrix: wrong player constant: %c\n", player);
@@ -161,7 +165,7 @@ int Count_free_spaces(int **matrix)
 	return free_spaces;
 }
 
-struct Move Get_move(void)
+struct Move Get_move(int **matrix)
 {
 	int row, col;
 	int status;
@@ -171,14 +175,20 @@ struct Move Get_move(void)
 	printf("Enter coordinats as: ROW COL (2, 1)\n");
 
 	while ( (status = scanf("%d%d", &row, &col)) != 2 ||
-			row < 1 || row > SIZE ||
-			col < 1 || col > SIZE)
-	{
-		if (status != 2) {
-			while (getchar() != '\n') ;
-		}
+			row < 1 || row > SIZE  ||
+			col < 1 || col > SIZE  ||
 
-		printf("   ### WRONG INPUT ### \ncoordinats must be integers in range (1 -> %d)\n\n", SIZE);
+			matrix[row-1][col-1] != FREE ) 
+	{
+
+		if (status != 2) {							// string was entered
+			while (getchar() != '\n') ;
+			printf("   ### WRONG INPUT ### \nCoordinats must be integers in range (1 -> %d)\n\n", SIZE);
+		} else if (row < 1 || row > SIZE || col < 1 || col > SIZE)  { // indices out 
+			printf("   ### WRONG INPUT ### \nCoordinats must be integers in range (1 -> %d)\n\n", SIZE);
+		} else if (matrix[row-1][col-1] != FREE) {	// cell is already used
+			printf("   ### CELL IS USED ###\nThis cell is already used. Try to get anouther one: \n");
+		}
 		printf("Enter coordinats as: ROW COL (2, 1)\n");
 	}
 	
