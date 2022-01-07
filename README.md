@@ -54,7 +54,7 @@ Rules in Tic Tac Toe are simply stupid:
 
 ## THE BOARD
 
-``` bash
+``` text
 +---+---+---+---+
 |   | 1 | 2 | 3 |
 +---+---+---+---+
