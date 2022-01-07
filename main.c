@@ -28,11 +28,12 @@ int main(int argc, char const *argv[])
 			counters.moves = 0;
 			play_again=0;
 		}
+		
 
 		// if not first move (do loop peculiarities)
 		if (counters.moves > 0) {
 			Change_matrix(matrix, move.row, move.col, player);
-
+			printf("!!!!\n");
 			if (Win_checker(matrix) == 1) {
 				
 				matrix = Init_matrix();
@@ -178,7 +179,8 @@ struct Move Get_move(int **matrix)
 			row < 1 || row > SIZE  ||
 			col < 1 || col > SIZE  ||
 
-			matrix[row-1][col-1] != FREE ) 
+			matrix[row-1][col-1] != FREE
+			) 
 	{
 
 		if (status != 2) {							// string was entered
@@ -230,7 +232,6 @@ int vertical_check(int **matrix, int row, int col)
 	} else {
 		return 0;
 	}
-		
 }
 
 int r_diagonally_check(int **matrix, int row, int col)
@@ -247,13 +248,12 @@ int r_diagonally_check(int **matrix, int row, int col)
 int l_diagonally_check(int **matrix, int row, int col)
 {
 	// if there are 3 the same values in left diagonal
-	if (matrix[row][col] == matrix[row-1][col-1] &&
-		matrix[row][col] == matrix[row-2][col-2]) {
+	if (matrix[row][col] == matrix[row+1][col-1] &&
+		matrix[row][col] == matrix[row+2][col-2]) {
 		return 1;
 	} else {
 		return 0;
 	}
-
 }
 
 int Win_checker(int **matrix)
@@ -286,8 +286,8 @@ int Win_checker(int **matrix)
 				rdiog = r_diagonally_check(matrix, row, col);
 			}
 
-			// enougth space in rigth diogonal
-			if (row-2 > SIZE && col-2 > SIZE) {
+			// enougth space in left diogonal
+			if (row+2 <	SIZE && col-2 >= 0) {
 				ldiog = l_diagonally_check(matrix, row, col);
 			}
 
