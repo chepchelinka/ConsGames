@@ -18,31 +18,41 @@ int main(int argc, char const *argv[])
 	// null all counters
 	counters.games = counters.p1_wins = counters.p2_wins = counters.moves = 0;
 	
+	// infiniti loop
 	do 
 	{
 		// someone won
 		if (play_again)
 		{
+			// reset matrix
+			matrix = Init_matrix();
+
+			// set first moving player
 			player = P1;
+
+			// increase game counter
 			counters.games++;
+
+			// reset move counter
 			counters.moves = 0;
+
+			// reset state
 			play_again=0;
 		}
 		
-
 		// if not first move (do loop peculiarities)
 		if (counters.moves > 0) {
 			Change_matrix(matrix, move.row, move.col, player);
-			printf("!!!!\n");
+
 			if (Win_checker(matrix) == 1) {
-				
-				matrix = Init_matrix();
 				
 				if (player == P1)
 					counters.p1_wins++;
 				else
 					counters.p2_wins++;
-					play_again=1;
+				
+				play_again=1;
+				
 				continue;
 				
 			} else {
@@ -51,6 +61,12 @@ int main(int argc, char const *argv[])
 		}
 
 		Print_matrix(matrix);
+
+		// if all free cells in matrix are out
+		if (Count_free_spaces(matrix) == 0) {
+			play_again = 1;
+			continue;
+		}
 
 		printf("Games played: %d\n", counters.games);
 		printf("P-%c wins: %d\n", P1, counters.p1_wins);
@@ -62,8 +78,7 @@ int main(int argc, char const *argv[])
 
 		move = Get_move(matrix);
 		counters.moves++;
-
-	} while (Count_free_spaces(matrix) > 0);
+	} while (1);
 
 	return 0;
 }
@@ -83,7 +98,6 @@ int **Init_matrix(void)
 	} 
 	
 	return matrix;
-
 }
 
 int Change_matrix(int **matrix, int row, int col, char player)
