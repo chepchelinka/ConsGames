@@ -10,19 +10,19 @@
 
 If you use gcc compiler you can compile the sources like this
 
-``` bash
+```
 gcc -o main.exe main.c
 ```
 
 or just
 
-``` bash
+```
 gcc main.c
 ```
 
 but your final file will looks like
 
-``` bash
+```
 a.out 
 ```
 
@@ -32,13 +32,13 @@ a.out
 
 ### __Linux / Unix__
 
-``` bash
+```
 ./main.exe
 ```
 
 ### __Windows__
 
-``` bash
+```
 main.exe
 ```
 
@@ -54,7 +54,7 @@ Rules in Tic Tac Toe are simply stupid:
 
 ## THE BOARD
 
-``` text
+```
 +---+---+---+---+
 |   | 1 | 2 | 3 |
 +---+---+---+---+
@@ -70,7 +70,7 @@ The first row and column are helpful
 
 ### This column is about rows, you can choose for move
 
-``` bash
+```
 +---+
 |   |
 +---+
@@ -84,7 +84,7 @@ The first row and column are helpful
 
 ### This row is about columns, you can choose for move
 
-``` bash
+```
 +---+---+---+---+
 |   | 1 | 2 | 3 |
 +---+---+---+---+
@@ -96,20 +96,20 @@ The first row and column are helpful
 
 You can make move after move invite that looks like
 
-``` bash
+```
 Player-X is moving
 Enter coordinats as: ROW COL (2, 1)
 ```
 
 Next just insert 2 numbers separated by space(s) or enter(s)
 
-``` bash
+```
 1 2
 ```
 
 or
 
-``` bash
+```
 1
 2
 ```
@@ -124,7 +124,7 @@ for example:
 
 after Player-X won:
 
-``` bash
+```
 Games played: 0
 P-X wins: 0
 P-O wins: 0
@@ -133,7 +133,7 @@ Moves made: 0
 
 before:
 
-``` bash
+```
 Games played: 0
 P-X wins: 1
 P-O wins: 0
