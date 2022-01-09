@@ -1,10 +1,15 @@
 # TIC TAC TOE
 
-## This C-project is about game calls tic-tac-toe
-
-### That you can play with your friend on local PC
+## This C-project is about game calls tic-tac-toe that you can play with your friend on local PC
 
 ---
+
+## INSTALLING
+To install this repository you can use next command
+
+```
+git clone https://github.com/chepchelinka/Tic-Tac.git
+```
 
 ## COMPILING
 
@@ -48,7 +53,7 @@ main.exe
 
 Rules in Tic Tac Toe are simply stupid:
 
-### Whoever first puts 3 of his pieces on the board won
+Whoever first puts 3 of his pieces on the board won
 
 ---
 
@@ -154,7 +159,7 @@ In the first 5 lines in main.h looks like:
 #define SIZE 3
 ```
 
-The P1, P2, FREE constants are about char of board.
+The __P1__, __P2__, __FREE__ constants are about char of board.
 
 __P1__ - The first player's constant
 
