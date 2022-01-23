@@ -2,7 +2,7 @@
 
 ## This C-project is about game calls tic-tac-toe that you can play with your friend on local PC
 
----
+
 
 ## INSTALLING
 To install this repository you can use next command
@@ -11,43 +11,6 @@ To install this repository you can use next command
 git clone https://github.com/chepchelinka/Tic-Tac.git
 ```
 
-## COMPILING
-
-If you use gcc compiler you can compile the sources like this
-
-```
-gcc -o main.exe main.c
-```
-
-or just
-
-```
-gcc main.c
-```
-
-but your final file will looks like
-
-```
-a.out 
-```
-
----
-
-## RUNNING
-
-### __Linux / Unix__
-
-```
-./main.exe
-```
-
-### __Windows__
-
-```
-main.exe
-```
-
----
 
 ## THE RULES
 
@@ -55,7 +18,6 @@ Rules in Tic Tac Toe are simply stupid:
 
 Whoever first puts 3 of his pieces on the board won
 
----
 
 ## THE BOARD
 
@@ -95,7 +57,6 @@ The first row and column are helpful
 +---+---+---+---+
 ```
 
----
 
 ## MOVING
 
@@ -119,7 +80,6 @@ or
 2
 ```
 
----
 
 ## WINNING
 
@@ -145,7 +105,6 @@ P-O wins: 0
 Moves made: 0
 ```
 
----
 
 ## THE CONSTANTS
 
