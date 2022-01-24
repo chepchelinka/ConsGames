@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-#include "main.h"
+#include "main.h"   // funcs
+#include "common.h" // constants
 
 int main(int argc, char const *argv[])
 {

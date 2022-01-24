@@ -1,17 +1,4 @@
-#define P1 'X'
-#define P2 'O'
-#define FREE ' '
-
-#define SIZE 3
-
-// clear console command depends of OS
-#if defined(_WIN32)
-    #define CLEAR "cls"
-
-#elif defined(__linux__)
-    #define CLEAR "clear"
-
-#endif
+// This file contains headers of functions 
 
 struct Move
 {
@@ -39,7 +26,7 @@ void Print_matrix(int **matrix);
 /* print_sep_line: prints separator line (+---+---+---+---+)
  * using in Print_matrix()
  */
-void print_sep_line(void);
+static void print_sep_line(void);
 
 /* Count_free_spaces: count all FREE chars in matrix
  * process some errors with input values
@@ -75,7 +62,7 @@ int horizontal_check(int **matrix, int row, int col);
  * using in Win_checker()
  *			! start
  *			X # #
- *  		X # #
+ *  	        	X # #
  * 			X # #
  */
 int vertical_check(int **matrix, int row, int col);
@@ -83,7 +70,7 @@ int vertical_check(int **matrix, int row, int col);
 /* r_diagonally_check:checks if right diagonally combination is win
  * using in Win_checker()
  *			! start
- *          X # #
+ *                      X # #
  * 			# X #
  * 			# # X
  */

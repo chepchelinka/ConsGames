@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "main.h"
+#include "common.h"
 
 int **Init_matrix(void)
 {
@@ -39,6 +39,19 @@ int Change_matrix(int **matrix, int row, int col, char player)
     }
 }
 
+
+static void print_sep_line(void)
+{
+    putchar('+');
+
+    for(int i=0; i<=SIZE; i++)
+    {
+        printf("---+");
+    }
+    putchar('\n');
+}
+
+
 void Print_matrix(int **matrix)
 {
     // clear console 
@@ -71,17 +84,6 @@ void Print_matrix(int **matrix)
             print_sep_line();
     }
     print_sep_line();
-    putchar('\n');
-}
-
-void print_sep_line(void)
-{
-    putchar('+');
-
-    for(int i=0; i<=SIZE; i++)
-    {
-        printf("---+");
-    }
     putchar('\n');
 }
 
