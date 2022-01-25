@@ -48,43 +48,5 @@ int Change_matrix(int **matrix, int row, int col, char player);
 // Switch_player: change player by opposite player
 void Switch_player(char *player);
 
-
-/* horizontal_check:  checks if horizontal combination is win
- * using in Win_checker()
- *			! start
- *			X X X 
- *			# # #
- *			# # #
- */
-int horizontal_check(int **matrix, int row, int col);
-
-/* vertical_check:    checks if vertical combination is win
- * using in Win_checker()
- *			! start
- *			X # #
- *  	        	X # #
- * 			X # #
- */
-int vertical_check(int **matrix, int row, int col);
-
-/* r_diagonally_check:checks if right diagonally combination is win
- * using in Win_checker()
- *			! start
- *                      X # #
- * 			# X #
- * 			# # X
- */
-int r_diagonally_check(int **matrix, int row, int col);
-
-/* l_diagonally_check:checks if left diagonally combination is win
- * using in Win_checker()
- *				! start
- * 			# # X
- * 			# X #
- * 			X # #
- */
-int l_diagonally_check(int **matrix, int row, int col);
-
-
 // Win_checker: checks if win combinations in the matrix
 int Win_checker(int **matrix);
