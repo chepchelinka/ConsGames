@@ -20,16 +20,35 @@ int main()
     {
         len = Get_command(command, COMM_LEN);
 
+        putchar('\n');
+
         if (len == -1) {                                                    // EOF
             printf("Tic-Tac[MENU]: EOF found. Exiting...\n");
             return -1;
         } else if (len == 0) {                                              // Empty command
             continue;
-        } else if (!strcmp(command, "~") || !strcmp(command, "q")) {        // Exit command
+        } else if (!strcmp(command, "q")) {        // Exit command
             printf("Tic-Tac[MENU]: exit command found. Exiting...\n");
             break;
 
-//        } else if () {
+        } else if (!strcmp(command, "h") || !strcmp(command, "help")) {     // Help command
+
+            printf("HELP LIST: here you can see all commands like: \n");
+            printf("\t[command]decoding --> DO\n\n");
+
+            printf("[q]uite --> EXIT\n");
+            
+            printf("[h]elp  --> HELP\n");
+
+            printf("[*]     --> SOON\n");
+            printf("[/]     --> SOON\n");
+
+            printf("[x]     --> SOON\n");
+            printf("[o]     --> SOON\n");
+
+
+            printf("\n\n");
+
 //        } else if () {
 //        } else if () {
  
