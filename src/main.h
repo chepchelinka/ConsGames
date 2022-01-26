@@ -23,6 +23,9 @@ int **Init_matrix();
 // Print_matrix: printing matrix and other interface
 void Print_matrix(int **matrix);
 
+// Print_move_info: printing information about the move
+void Print_move_info(const struct Game_cnts counters, char player);
+ 
 /* Count_free_spaces: count all FREE chars in matrix
  * process some errors with input values
  */

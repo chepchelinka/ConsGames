@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "common.h"
+#include "main.h"   // struct Game_cnts
 
 int **Init_matrix(void)
 {
@@ -85,6 +86,17 @@ void Print_matrix(int **matrix)
     }
     print_sep_line();
     putchar('\n');
+}
+
+void Print_move_info(const struct Game_cnts counters, char player)
+{
+    printf("Games played: %d\n", counters.games);
+    printf("P-%c wins: %d\n", P1, counters.p1_wins);
+    printf("P-%c wins: %d\n", P2, counters.p2_wins);
+    printf("Moves made: %d\n\n", counters.moves);
+
+    printf("Player-%c is moving\n", player);
+
 }
 
 int Count_free_spaces(int **matrix)

@@ -68,13 +68,7 @@ int main(int argc, char const *argv[])
             continue;
         }
 
-        printf("Games played: %d\n", counters.games);
-        printf("P-%c wins: %d\n", P1, counters.p1_wins);
-        printf("P-%c wins: %d\n", P2, counters.p2_wins);
-        printf("Moves made: %d\n\n", counters.moves);
-
-
-        printf("Player-%c is moving\n", player);
+        Print_move_info(counters, player);
 
         move = Get_move(matrix);
         counters.moves++;
