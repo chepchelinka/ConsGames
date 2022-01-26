@@ -18,7 +18,7 @@ int main()
     int len=0;
 
     printf("Welcome to the Tic-Tac.\n");
-    printf("Version: DEVELOP|4\n\n");
+    printf("Version: DEVELOP|?\n\n");
 
 
     while (1)
@@ -52,14 +52,18 @@ int main()
             printf("[o]     --> SOON\n");
 
 
-            printf("\n\n");
 
 //        } else if () {
 //        } else if () {
  
         } else {                                                            // Unknown command
-           printf("Tic-Tac[MENU]: unknown command. Try [H]elp to get command list\n");
+           printf("Tic-Tac[MENU]: unknown command:\n");
+           printf("\t%s\n", command);
+           printf("Try [H]elp to get command list\n");
         }
+
+        putchar('\n');
+
     }
 
     return 0;
@@ -71,7 +75,7 @@ int Get_command(char *command, int limit)
     char simbol;
     int len=0;
 
-    printf("MENU[~] ");
+    printf("   MENU[~] ");
 
     while (len<limit && (simbol = getchar()) != '\n' && simbol != EOF)
     {
@@ -91,7 +95,12 @@ int Get_command(char *command, int limit)
         }
     }
 
-    // exit if EOF
+    // if command is to long
+    if (len==limit) 
+       printf("Tic-Tac: command is too long. You can have a problems\n");
+    
+
+    // drop program if EOF
     if (simbol==EOF)
         return -1;
 
