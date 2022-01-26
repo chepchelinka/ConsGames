@@ -23,11 +23,6 @@ int **Init_matrix();
 // Print_matrix: printing matrix and other interface
 void Print_matrix(int **matrix);
 
-/* print_sep_line: prints separator line (+---+---+---+---+)
- * using in Print_matrix()
- */
-static void print_sep_line(void);
-
 /* Count_free_spaces: count all FREE chars in matrix
  * process some errors with input values
  */
