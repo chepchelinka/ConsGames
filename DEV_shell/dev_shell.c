@@ -6,6 +6,7 @@
 
 /* Get_command: get command from the user 
  * cut extra white simbols (' ', '\n', '\t')
+ * ignoring case
  * returns len of gotten command
  */
 int Get_command(char *command, int n);
@@ -67,6 +68,7 @@ int Get_command(char *command, int limit)
     int len=0;
 
     printf("[~] ");
+
     while (len<limit && (simbol = getchar()) != '\n' && simbol != EOF)
     {
         // replace tabs by space
@@ -80,7 +82,7 @@ int Get_command(char *command, int limit)
         if ( isspace(simbol) && (len==0 || isspace(command[len-1])) ) 
             ; 
         else {
-            command[len]=simbol;
+            command[len] = tolower(simbol);
             len++;
         }
     }
