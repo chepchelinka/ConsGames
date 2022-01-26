@@ -57,9 +57,7 @@ int main()
 //        } else if () {
  
         } else {                                                            // Unknown command
-           printf("Tic-Tac[MENU]: unknown command:\n");
-           printf("\t%s\n", command);
-           printf("Try [H]elp to get command list\n");
+           printf("Tic-Tac[MENU]: unknown command: %s. \nTry [H]elp to get command list.\n", command);
         }
 
         putchar('\n');
