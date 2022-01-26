@@ -17,6 +17,10 @@ int main()
     char command[COMM_LEN];
     int len=0;
 
+    printf("Welcome to the Tic-Tac.\n");
+    printf("Version: DEVELOP|4\n\n");
+
+
     while (1)
     {
         len = Get_command(command, COMM_LEN);
@@ -67,7 +71,7 @@ int Get_command(char *command, int limit)
     char simbol;
     int len=0;
 
-    printf("[~] ");
+    printf("MENU[~] ");
 
     while (len<limit && (simbol = getchar()) != '\n' && simbol != EOF)
     {
