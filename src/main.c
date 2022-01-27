@@ -3,7 +3,7 @@
 #include "main.h"   // funcs
 #include "common.h" // constants
 
-int main(int argc, char const *argv[])
+int main()
 {
     int **matrix = Init_matrix();
     
@@ -77,7 +77,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-struct Move Get_move(int **matrix)
+struct Move Get_move(const int **matrix)
 {
     int row, col;
     int status;

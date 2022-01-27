@@ -21,18 +21,18 @@ struct Game_cnts
 int **Init_matrix();
 
 // Print_matrix: printing matrix and other interface
-void Print_matrix(int **matrix);
+void Print_matrix(const int **matrix);
 
 // Print_move_info: printing information about the move
-void Print_move_info(const struct Game_cnts counters, char player);
+void Print_move_info(struct Game_cnts counters, char player);
  
 /* Count_free_spaces: count all FREE chars in matrix
  * process some errors with input values
  */
-int Count_free_spaces(int **matrix);
+int Count_free_spaces(const int **matrix);
 
 // Get_move: get move from user and returns struct with move coordinats
-struct Move Get_move(int**matrix);
+struct Move Get_move(const int**matrix);
 
 /* Change_matrix: replace matrix[row][col] by player const (P1 or P2)
  * end returning code of error
@@ -47,4 +47,4 @@ int Change_matrix(int **matrix, int row, int col, char player);
 void Switch_player(char *player);
 
 // Win_checker: checks if win combinations in the matrix
-int Win_checker(int **matrix);
+int Win_checker(const int **matrix);

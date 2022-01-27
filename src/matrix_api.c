@@ -53,7 +53,7 @@ static void print_sep_line(void)
 }
 
 
-void Print_matrix(int **matrix)
+void Print_matrix(const int **matrix)
 {
     // clear console 
     system(CLEAR);
@@ -88,7 +88,7 @@ void Print_matrix(int **matrix)
     putchar('\n');
 }
 
-void Print_move_info(const struct Game_cnts counters, char player)
+void Print_move_info(struct Game_cnts counters, char player)
 {
     printf("Games played: %d\n", counters.games);
     printf("P-%c wins: %d\n", P1, counters.p1_wins);
@@ -99,7 +99,7 @@ void Print_move_info(const struct Game_cnts counters, char player)
 
 }
 
-int Count_free_spaces(int **matrix)
+int Count_free_spaces(const int **matrix)
 {
     int free_spaces=0;
     for (int i=0; i<SIZE; i++)

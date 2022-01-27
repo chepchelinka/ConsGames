@@ -7,7 +7,7 @@
  *			# # #
  *			# # #
  */
-static int horizontal_check(int **matrix, int row, int col)
+static int horizontal_check(const int **matrix, int row, int col)
 {
     int *my_row = matrix[row];
 
@@ -27,7 +27,7 @@ static int horizontal_check(int **matrix, int row, int col)
  *  	        	X # #
  * 			X # #
  */
-static int vertical_check(int **matrix, int row, int col)
+static int vertical_check(const int **matrix, int row, int col)
 {
     // if there are 3 the same values i column
     if (matrix[row][col] == matrix[row+1][col] &&
@@ -45,7 +45,7 @@ static int vertical_check(int **matrix, int row, int col)
  * 			# X #
  * 			# # X
  */
-static int r_diagonally_check(int **matrix, int row, int col)
+static int r_diagonally_check(const int **matrix, int row, int col)
 {
     // if there are 3 the same values in right diagonal
     if (matrix[row][col] == matrix[row+1][col+1] &&
@@ -63,7 +63,7 @@ static int r_diagonally_check(int **matrix, int row, int col)
  * 			# X #
  * 			X # #
  */
-static int l_diagonally_check(int **matrix, int row, int col)
+static int l_diagonally_check(const int **matrix, int row, int col)
 {
     // if there are 3 the same values in left diagonal
     if (matrix[row][col] == matrix[row+1][col-1] &&
@@ -74,7 +74,7 @@ static int l_diagonally_check(int **matrix, int row, int col)
     }
 }
 
-int Win_checker(int **matrix)
+int Win_checker(const int **matrix)
 {
     int horiz, vert, rdiog, ldiog;
 
