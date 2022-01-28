@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "common.h"
-#include "main.h"   // struct Game_cnts
+#include "game.h"   // struct Game_cnts
 
 int **Init_matrix(void)
 {

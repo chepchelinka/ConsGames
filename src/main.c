@@ -1,122 +1,112 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-#include "main.h"   // funcs
-#include "common.h" // constants
+#define COMM_LEN 100
+
+/* Get_command: get command from the user 
+ * cut extra white simbols (' ', '\n', '\t')
+ * ignoring case
+ * returns len of gotten command
+ */
+int Get_command(char *command, int n);
 
 int main()
 {
-    int **matrix = Init_matrix();
-    
-    struct Game_cnts counters;
-    struct Move move;
+    char command[COMM_LEN];
+    int len=0;
 
-    // moving player
-    char player=P1;
+    printf("Welcome to the Tic-Tac.\n");
+    printf("Version: DEVELOP|?\n\n");
 
-    int play_again=0;
 
-    // null all counters
-    counters.games = counters.p1_wins = counters.p2_wins = counters.moves = 0;
-    
-    // infiniti loop
-    do 
+    while (1)
     {
-        // someone won
-        if (play_again)
-        {
-            // reset matrix
-            matrix = Init_matrix();
+        len = Get_command(command, COMM_LEN);
 
-            // set first moving player
-            player = P1;
+        putchar('\n');
 
-            // increase game counter
-            counters.games++;
-
-            // reset move counter
-            counters.moves = 0;
-
-            // reset state
-            play_again=0;
-        }
-        
-        // if not first move (do loop peculiarities)
-        if (counters.moves > 0) {
-            Change_matrix(matrix, move.row, move.col, player);
-
-            if (Win_checker(matrix) == 1) {
-                
-                if (player == P1)
-                    counters.p1_wins++;
-                else
-                    counters.p2_wins++;
-                
-                play_again=1;
-                
-                continue;
-                
-            } else {
-                Switch_player(&player);     
-            }
-        }
-
-        Print_matrix(matrix);
-
-        // if all free cells in matrix are out
-        if (Count_free_spaces(matrix) == 0) {
-            play_again = 1;
+        if (len == -1) {                                                    // EOF
+            printf("Tic-Tac[MENU]: EOF found. Exiting...\n");
+            return -1;
+        } else if (len == 0) {                                              // Empty command
             continue;
+        } else if (!strcmp(command, "q")) {        // Exit command
+            printf("Tic-Tac[MENU]: exit command found. Exiting...\n");
+            break;
+
+        } else if (!strcmp(command, "h") || !strcmp(command, "help")) {     // Help command
+
+            printf("HELP LIST: here you can see all commands like: \n");
+            printf("\t[command]decoding --> DO\n\n");
+
+            printf("[q]uite --> EXIT\n");
+            
+            printf("[h]elp  --> HELP\n");
+
+            printf("[*]     --> SOON\n");
+            printf("[/]     --> SOON\n");
+
+            printf("[x]     --> SOON\n");
+            printf("[o]     --> SOON\n");
+
+
+
+//        } else if () {
+//        } else if () {
+ 
+        } else {                                                            // Unknown command
+           printf("Tic-Tac[MENU]: unknown command: %s. \nTry [H]elp to get command list.\n", command);
         }
 
-        Print_move_info(counters, player);
+        putchar('\n');
 
-        move = Get_move(matrix);
-        counters.moves++;
-    } while (1);
+    }
 
     return 0;
 }
 
-struct Move Get_move(int **matrix)
+int Get_command(char *command, int limit)
 {
-    int row, col;
-    int status;
-
-    struct Move move;
-
-    printf("Enter coordinats as: ROW COL (2, 1)\n");
-
-    while ( (status = scanf("%d%d", &row, &col)) != 2 ||
-            row < 1 || row > SIZE  ||
-            col < 1 || col > SIZE  ||
-
-            matrix[row-1][col-1] != FREE
-            ) 
-    {
-
-        if (status != 2) {							// string was entered
-            while (getchar() != '\n') ;
-            printf("   ### WRONG INPUT ### \nCoordinats must be integers in range (1 -> %d)\n\n", SIZE);
-        } else if (row < 1 || row > SIZE || col < 1 || col > SIZE)  { // indices out 
-            printf("   ### WRONG INPUT ### \nCoordinats must be integers in range (1 -> %d)\n\n", SIZE);
-        } else if (matrix[row-1][col-1] != FREE) {	// cell is already used
-            printf("   ### CELL IS USED ###\nThis cell is already used. Try to get anouther one: \n");
-        }
-        printf("Enter coordinats as: ROW COL (2, 1)\n");
-    }
     
-    move.row = row - 1;
-    move.col = col - 1;
+    char simbol;
+    int len=0;
 
-    return move;    	
-}
+    printf("   MENU[~] ");
 
-void Switch_player(char *player) 
-{
-    if (*player == P1) {
-        *player = P2;
-    } else {
-        *player = P1;
+    while (len<limit && (simbol = getchar()) != '\n' && simbol != EOF)
+    {
+        // replace tabs by space
+        if (simbol == '\t')
+            simbol = ' ';
+
+        /* ignore white simbol IF
+         * it's the first OR 
+         * the last simbol was also white 
+         */
+        if ( isspace(simbol) && (len==0 || isspace(command[len-1])) ) 
+            ; 
+        else {
+            command[len] = tolower(simbol);
+            len++;
+        }
     }
+
+    // if command is to long
+    if (len==limit) 
+       printf("Tic-Tac: command is too long. You can have a problems\n");
+    
+
+    // drop program if EOF
+    if (simbol==EOF)
+        return -1;
+
+    // if last simbol is space: replace it by '\0'
+    if (isspace(command[len-1]))
+        len--;
+
+    command[len] = '\0';
+
+    return len; 
 }
 
