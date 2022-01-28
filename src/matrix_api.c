@@ -53,7 +53,7 @@ static void print_sep_line(void)
 }
 
 
-void Print_matrix(const int **matrix)
+void Print_matrix(int **matrix)
 {
     // clear console 
     system(CLEAR);
@@ -99,7 +99,7 @@ void Print_move_info(struct Game_cnts counters, char player)
 
 }
 
-int Count_free_spaces(const int **matrix)
+int Count_free_spaces(int **matrix)
 {
     int free_spaces=0;
     for (int i=0; i<SIZE; i++)

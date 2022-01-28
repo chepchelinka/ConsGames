@@ -77,7 +77,7 @@ int main()
     return 0;
 }
 
-struct Move Get_move(const int **matrix)
+struct Move Get_move(int **matrix)
 {
     int row, col;
     int status;
