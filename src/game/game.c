@@ -18,6 +18,7 @@ int Game_loop()
     // null all counters
     counters.games = counters.p1_wins = counters.p2_wins = counters.moves = 0;
     
+    printf("@@@@\n");
     // infiniti loop
     do 
     {

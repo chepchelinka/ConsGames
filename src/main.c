@@ -11,13 +11,16 @@
  */
 int Get_command(char *command, int n);
 
+// Game_loop: main loop of the game
+int Game_loop();
+
 int main()
 {
     char command[COMM_LEN];
     int len=0;
 
     printf("Welcome to the Tic-Tac.\n");
-    printf("Version: DEVELOP|?\n\n");
+    printf("Version: INTEGRATION|?\n\n");
 
 
     while (1)
@@ -31,7 +34,7 @@ int main()
             return -1;
         } else if (len == 0) {                                              // Empty command
             continue;
-        } else if (!strcmp(command, "q")) {        // Exit command
+        } else if (!strcmp(command, "q")) {                                 // Exit command
             printf("Tic-Tac[MENU]: exit command found. Exiting...\n");
             break;
 
@@ -41,17 +44,22 @@ int main()
             printf("\t[command]decoding --> DO\n\n");
 
             printf("[q]uite --> EXIT\n");
-            
             printf("[h]elp  --> HELP\n");
+            printf("[S]tart --> SOON\n");
 
-            printf("[*]     --> SOON\n");
             printf("[/]     --> SOON\n");
-
             printf("[x]     --> SOON\n");
             printf("[o]     --> SOON\n");
 
 
 
+       } else if (!strcmp(command, "s") || !strcmp(command, "start")) {
+
+           printf("!!!\n");
+           Game_loop();
+
+
+//        } else if () {
 //        } else if () {
 //        } else if () {
  
