@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "common.h"
 #include "game.h"   // struct Game_cnts
 
 int **Init_matrix(void)

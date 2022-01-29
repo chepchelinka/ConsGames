@@ -1,4 +1,20 @@
-// This file contains headers of functions 
+#define P1 'X'
+#define P2 'O'
+#define FREE ' '
+
+#define SIZE 3
+
+#define COMMAND_LEN 100
+
+// Clear console command depends of OS
+#if defined(_WIN32)
+    #define CLEAR "cls"
+
+#elif defined(__linux__)
+    #define CLEAR "clear"
+
+#endif
+
 
 struct Move
 {
@@ -13,6 +29,19 @@ struct Game_cnts
     int p1_wins;
     int p2_wins;
 };
+
+/* Get_command: get command from the user.
+ * Cut extra white simbols (' ', '\n', '\t').
+ * Ignoring case.
+ * Returns len of gotten command.
+ * Defined in src/game/misc.c
+ */
+int Get_command(char *command);
+
+/* Game_loop: main loop of the game.
+ * Defined in src/game/game.c
+ */
+int Game_loop();
 
 
 /* Init_matrix: create matrix[SIZE][SIZE]

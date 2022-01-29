@@ -1,4 +1,4 @@
-#include "common.h" 
+#include "game.h" 
 
 /* horizontal_check:  checks if horizontal combination is win
  * using in Win_checker()

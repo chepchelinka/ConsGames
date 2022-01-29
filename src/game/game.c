@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 #include "game.h"   // funcs
-#include "common.h" // constants
 
 int Game_loop()
 {
@@ -18,7 +17,7 @@ int Game_loop()
     // null all counters
     counters.games = counters.p1_wins = counters.p2_wins = counters.moves = 0;
     
-    printf("@@@@\n");
+
     // infiniti loop
     do 
     {
@@ -73,51 +72,9 @@ int Game_loop()
 
         move = Get_move(matrix);
         counters.moves++;
-    } while (1);
+    } while (move.row >= 0 || move.col >= 0);
 
     return 0;
 }
 
-struct Move Get_move(int **matrix)
-{
-    int row, col;
-    int status;
-
-    struct Move move;
-
-    printf("Enter coordinats as: ROW COL (2, 1)\n");
-
-    while ( (status = scanf("%d%d", &row, &col)) != 2 ||
-            row < 1 || row > SIZE  ||
-            col < 1 || col > SIZE  ||
-
-            matrix[row-1][col-1] != FREE
-            ) 
-    {
-
-        if (status != 2) {							// string was entered
-            while (getchar() != '\n') ;
-            printf("   ### WRONG INPUT ### \nCoordinats must be integers in range (1 -> %d)\n\n", SIZE);
-        } else if (row < 1 || row > SIZE || col < 1 || col > SIZE)  { // indices out 
-            printf("   ### WRONG INPUT ### \nCoordinats must be integers in range (1 -> %d)\n\n", SIZE);
-        } else if (matrix[row-1][col-1] != FREE) {	// cell is already used
-            printf("   ### CELL IS USED ###\nThis cell is already used. Try to get anouther one: \n");
-        }
-        printf("Enter coordinats as: ROW COL (2, 1)\n");
-    }
-    
-    move.row = row - 1;
-    move.col = col - 1;
-
-    return move;    	
-}
-
-void Switch_player(char *player) 
-{
-    if (*player == P1) {
-        *player = P2;
-    } else {
-        *player = P1;
-    }
-}
 

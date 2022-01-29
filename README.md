@@ -64,22 +64,14 @@ You can make move after move invite that looks like
 
 ```
 Player-X is moving
-Enter coordinats as: ROW COL (2, 1)
+Enter coordinats as: ROW COL (2;1)
 ```
 
-Next just insert 2 numbers separated by space(s) or enter(s)
+Next just insert 2 numbers separated by ; 
 
 ```
-1 2
+1;2
 ```
-
-or
-
-```
-1
-2
-```
-
 
 ## WINNING
 
@@ -141,7 +133,9 @@ In future the size will changed for a specific flag
 
 - [ ] Command shell
 
-  - [ ] exit command
+  - [x] exit command
+  - [x] start the game
+  - [ ] exit from the game to the main menu
   - [ ] change names command
 
 - [ ] Flags
