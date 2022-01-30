@@ -151,3 +151,4 @@ In future the size will changed for a specific flag
     - [ ] P1 / P2 / FREE
 
 - [ ] Solo mode
+
