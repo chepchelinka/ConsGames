@@ -74,6 +74,10 @@ int Game_loop()
         counters.moves++;
     } while (move.row >= 0 || move.col >= 0);
 
+    Free_matrix(matrix);
+
+    printf("Tic-Tac[S]: game over.\n");
+
     return 0;
 }
 

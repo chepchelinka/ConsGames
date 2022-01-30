@@ -49,6 +49,8 @@ int Game_loop();
  */
 int **Init_matrix();
 
+void Free_matrix();
+
 // Print_matrix: printing matrix and other interface
 void Print_matrix(int **matrix);
 

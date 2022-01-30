@@ -19,6 +19,16 @@ int **Init_matrix(void)
     return matrix;
 }
 
+void Free_matrix(int **matrix)
+{
+    for (int i=0; i<SIZE; i++)
+    {
+        free(matrix[i]);
+    }
+
+    free(matrix);
+}
+
 int Change_matrix(int **matrix, int row, int col, char player)
 {
     
