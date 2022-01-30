@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "common.h"
-#include "main.h"   // struct Game_cnts
+#include "game.h"   // struct Game_cnts
 
 int **Init_matrix(void)
 {
@@ -53,7 +52,7 @@ static void print_sep_line(void)
 }
 
 
-void Print_matrix(const int **matrix)
+void Print_matrix(int **matrix)
 {
     // clear console 
     system(CLEAR);
@@ -99,7 +98,7 @@ void Print_move_info(struct Game_cnts counters, char player)
 
 }
 
-int Count_free_spaces(const int **matrix)
+int Count_free_spaces(int **matrix)
 {
     int free_spaces=0;
     for (int i=0; i<SIZE; i++)
