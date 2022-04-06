@@ -59,17 +59,26 @@ Free_matrix(Matrix** ppmtx)
 
 
 int
-Matrix_count_free(const Matrix* pmtx);
+Get_matrix(const Matrix* pmtx, int row, int col)
+{
+	size_t size = pmtx->size;
 
+ 	// check if coordinates in available range
+    if (row >= size || row < 0 ||
+        col >= size || col < 0) {
 
-int
-Fill_matrix(Matrix** ppmtx, int src);
+		return 1;
+	}
 
-
-int
-Get_matrix(const Matrix* pmtx, int row, int col);
+	return pmtx->matrix[row][col];	
+}
 
 
 int
 Set_matrix(Matrix** ppmtx, int row, int col);
+
+
+
+int
+Fill_matrix(Matrix** ppmtx, int src);
 
