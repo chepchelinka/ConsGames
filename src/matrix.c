@@ -67,16 +67,32 @@ Get_matrix(const Matrix* pmtx, int row, int col)
     if (row >= size || row < 0 ||
         col >= size || col < 0) {
 
-		return 1;
+		fpritnf(stderr, "%s: Get_matrix: coordiants (%d:%d) not in avalibal range (%d)\n", __FILE__, row, col, size);
+		exit(EXIT_FAILURE);
 	}
 
+	// return item of matrix by give coorginats
 	return pmtx->matrix[row][col];	
 }
 
 
 int
-Set_matrix(Matrix** ppmtx, int row, int col);
+Set_matrix(Matrix** ppmtx, int row, int col, int src)
+{
+	size_t size = (*ppmtx)->size;
 
+	// check if coordinates in available range
+    if (row >= size || row < 0 ||
+        col >= size || col < 0) {
+
+		fpritnf(stderr, "%s: Set_matrix: coordiants (%d:%d) not in avalibal range (%d)\n", __FILE__, row, col, size);
+		exit(EXIT_FAILURE);
+	}
+
+	// set and return given value
+	return ((*ppmtx)->matrix[row][col] = src);
+
+}
 
 
 int

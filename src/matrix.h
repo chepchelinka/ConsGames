@@ -21,15 +21,18 @@ Free_matrix(Matrix**);
 
 
 /* Get_matrix: return item by coordinats
- * 
-*/
+ * do exit(1) with message about the error
+ */
 int
 Get_matrix(const Matrix* pmtx, int row, int col);
 
 
-/**/
+/* Set_matrix: set value to matrix by given coordinats
+ * do exit(1) with message about the error
+ * return given value
+*/
 int
-Set_matrix(Matrix** ppmtx, int row, int col);
+Set_matrix(Matrix** ppmtx, int row, int col, int src);
 
 
 /**/
