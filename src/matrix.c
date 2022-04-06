@@ -9,7 +9,7 @@ Matrix*
 Init_matrix(size_t size)
 {
 
-	Matrix *mtx;
+	Matrix *pmtx;
 	Matrix tmp_mtx={size};
 
 
@@ -28,22 +28,36 @@ Init_matrix(size_t size)
 	}
 
 	// can't allocate memory for returning struct
-	if ((mtx = (Matrix*) malloc(sizeof (Matrix*))) == NULL)  {
+	if ((pmtx = (Matrix*) malloc(sizeof (Matrix*))) == NULL)  {
 		fprintf(stderr, "%s: Init_matrix: can't allocate memory for matrix struct\n", __FILE__);
 		exit(EXIT_FAILURE);
 	}
 
-	memcpy(mtx, &tmp_mtx, sizeof(tmp_mtx));
+	memcpy(pmtx, &tmp_mtx, sizeof(tmp_mtx));
 	
-	return mtx;
+	return pmtx;
 	
 }
 
 
 void
-Free_matrix(Matrix* matrix);
+Free_matrix(Matrix** ppmtx)
+{
+	size_t size =(*ppmtx)->size;
+
+	// free cols of matrix
+	for (int i=0; i<size; i++) {
+		free( (*ppmtx)->matrix[i] );
+	}
+
+	// free rows of matrix
+	free((*ppmtx)->matrix);
+
+	// free the struct
+	free((*ppmtx));
+}
 
 
 int
-Count_free_matrix(const Matrix*);
+Matrix_count_free(const Matrix* matrix);
 

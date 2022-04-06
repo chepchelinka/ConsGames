@@ -8,13 +8,12 @@ typedef struct
 } Matrix;
 
 
-
 Matrix*
 Init_matrix(size_t size);
 
 
 void
-Free_matrix(Matrix*);
+Free_matrix(Matrix**);
 
 
 int
