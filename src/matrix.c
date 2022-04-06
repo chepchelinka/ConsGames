@@ -59,5 +59,17 @@ Free_matrix(Matrix** ppmtx)
 
 
 int
-Matrix_count_free(const Matrix* matrix);
+Matrix_count_free(const Matrix* pmtx);
+
+
+int
+Fill_matrix(Matrix** ppmtx, int src);
+
+
+int
+Get_matrix(const Matrix* pmtx, int row, int col);
+
+
+int
+Set_matrix(Matrix** ppmtx, int row, int col);
 
