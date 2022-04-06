@@ -15,7 +15,8 @@ Matrix*
 Init_matrix(size_t size);
 
 
-/* Free_matrix: free whole struct (rows and cols of matrix and the struct itself)*/
+/* Free_matrix: free whole struct (rows and cols of matrix and the struct itself)
+ */
 void
 Free_matrix(Matrix**);
 
@@ -30,13 +31,15 @@ Get_matrix(const Matrix* pmtx, int row, int col);
 /* Set_matrix: set value to matrix by given coordinats
  * do exit(1) with message about the error
  * return given value
-*/
+ */
 int
 Set_matrix(Matrix** ppmtx, int row, int col, int src);
 
 
-/**/
-int
+/* Fill_matrix: set all cells by given value
+ * Base on Set_matrix(...)
+ */
+void
 Fill_matrix(Matrix**, int src);
 
 

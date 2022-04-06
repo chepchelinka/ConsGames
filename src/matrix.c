@@ -67,7 +67,7 @@ Get_matrix(const Matrix* pmtx, int row, int col)
     if (row >= size || row < 0 ||
         col >= size || col < 0) {
 
-		fpritnf(stderr, "%s: Get_matrix: coordiants (%d:%d) not in avalibal range (%d)\n", __FILE__, row, col, size);
+		fprintf(stderr, "%s: Get_matrix: coordiants (%d:%d) not in avalibal range (%ld)\n", __FILE__, row, col, size);
 		exit(EXIT_FAILURE);
 	}
 
@@ -85,7 +85,7 @@ Set_matrix(Matrix** ppmtx, int row, int col, int src)
     if (row >= size || row < 0 ||
         col >= size || col < 0) {
 
-		fpritnf(stderr, "%s: Set_matrix: coordiants (%d:%d) not in avalibal range (%d)\n", __FILE__, row, col, size);
+		fprintf(stderr, "%s: Set_matrix: coordiants (%d:%d) not in avalibal range (%ld)\n", __FILE__, row, col, size);
 		exit(EXIT_FAILURE);
 	}
 
@@ -95,6 +95,16 @@ Set_matrix(Matrix** ppmtx, int row, int col, int src)
 }
 
 
-int
-Fill_matrix(Matrix** ppmtx, int src);
+void
+Fill_matrix(Matrix** ppmtx, int src)
+{
+	size_t size = (*ppmtx)->size;
+
+	// fill matrix cell by cell
+	for (int i=0; i<size; i++) {
+		for (int j=0; j<size; j++) {
+			Set_matrix(ppmtx, i, j, src);
+		}
+	}
+}
 
