@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 #include "game.h"   // funcs
 
 int Run_tictac()
@@ -81,4 +81,14 @@ int Run_tictac()
     return 0;
 }
 
+
+
+void Switch_player(char *player) 
+{
+    if (*player == P1) {
+        *player = P2;
+    } else {
+        *player = P1;
+    }
+}
 

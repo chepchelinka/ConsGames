@@ -4,4 +4,3 @@ TicTac.exe: src/*
 		src/game.c        \
 		src/matrix_api.c  \
 		src/win_checker.c \
-		src/misc.c

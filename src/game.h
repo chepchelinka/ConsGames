@@ -4,7 +4,7 @@
 
 #define SIZE 3
 
-#define COMMAND_LEN 100
+#define COMMAND_LEN 1024
 
 // Clear console command depends of OS
 #if defined(_WIN32)
@@ -31,22 +31,43 @@ struct Game_cnts
 };
 
 
+/* print_command_invite: invite user to enter his command
+ * define this function in every unit 
+ */
 static void
 print_command_invite(void);
 
 
 /* Get_command: get command from the user.
+ * Doesn't print invite.
  * Cut extra white simbols (' ', '\n', '\t').
  * Ignoring case.
  * Returns len of gotten command.
- * Defined in src/game/misc.c
  */
 int Get_command(char *command);
+
+
+/* Get_move: get coordinats from user
+ * use Get_command if user entered not coordinats
+ */
+struct Move Get_move(int**matrix);
+
 
 /* Run_tictac: main loop of the game.
  * Defined in src/game/game.c
  */
 int Run_tictac();
+
+
+
+// Switch_player: change player by opposite player
+void Switch_player(char *player);
+
+
+
+
+
+// NOTE: change next funcs in future
 
 /* Init_matrix: create matrix[SIZE][SIZE]
  * and fill matrix by FREE 
@@ -66,9 +87,6 @@ void Print_move_info(struct Game_cnts counters, char player);
  */
 int Count_free_spaces(int **matrix);
 
-// Get_move: get move from user and returns struct with move coordinats
-struct Move Get_move(int**matrix);
-
 /* Change_matrix: replace matrix[row][col] by player const (P1 or P2)
  * end returning code of error
  * 1  - fine
@@ -77,9 +95,6 @@ struct Move Get_move(int**matrix);
  * -3 - wrong player const
  */
 int Change_matrix(int **matrix, int row, int col, char player);
-
-// Switch_player: change player by opposite player
-void Switch_player(char *player);
 
 // Win_checker: checks if win combinations in the matrix
 int Win_checker(int **matrix);
