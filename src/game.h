@@ -30,6 +30,11 @@ struct Game_cnts
     int p2_wins;
 };
 
+
+static void
+print_command_invite(void);
+
+
 /* Get_command: get command from the user.
  * Cut extra white simbols (' ', '\n', '\t').
  * Ignoring case.
@@ -38,11 +43,10 @@ struct Game_cnts
  */
 int Get_command(char *command);
 
-/* Game_loop: main loop of the game.
+/* Run_tictac: main loop of the game.
  * Defined in src/game/game.c
  */
-int Game_loop();
-
+int Run_tictac();
 
 /* Init_matrix: create matrix[SIZE][SIZE]
  * and fill matrix by FREE 

@@ -1,65 +1,134 @@
 #include <stdio.h>
 #include <string.h>
-
+#include <stdlib.h>
 #include "game.h"
 
-int main()
+#define BUFSIZE 1024
+#define COMMANDS_COUNT 3
+#define WELCOME_MSG "Welcome to the Tic-Tac.\n" \
+					"Version: 2.0\n\n"
+
+
+// list of all avalible commands
+static const char* command_arr[COMMANDS_COUNT] = {
+	"exit",
+	"help",
+	"tictac"	
+};
+
+
+// codes of all avalibal commands 
+typedef enum {
+	C_UNKNOWN=-1,
+	C_EXIT,
+	C_HELP,
+	C_TICTAC
+} command_t;
+
+
+// contains information about a user's request
+typedef struct
 {
-    char command[COMMAND_LEN];
-    int len=0;
-
-    printf("Welcome to the Tic-Tac.\n");
-    printf("Version: 2.0\n\n");
-
-
-    while (1)
-    {
-        printf("    [~] ");
-        len = Get_command(command);
-
-        putchar('\n');
-
-        if (len == -1) {                                                    // EOF
-            printf("Tic-Tac[~]: EOF found. Exiting...\n");
-            return -1;
-        } else if (len == 0) {                                              // Empty command
-            continue;
-        } else if (!strcmp(command, "q")) {                                 // Exit command
-            printf("Tic-Tac[~]: exit command found. Exiting...\n");
-            break;
-
-        } else if (!strcmp(command, "h") || !strcmp(command, "help")) {     // Help command
-
-            printf("HELP LIST: here you can see all commands like: \n");
-            printf("\t[command]decoding --> DO\n\n");
-
-            printf("[q]uite --> EXIT\n");
-            printf("[h]elp  --> HELP LIST\n");
-            printf("[S]tart --> START THE GAME\n");
-
-            printf("[/]     --> SOON\n");
-            printf("[x]     --> SOON\n");
-            printf("[o]     --> SOON\n");
+	int len;
+	char input[BUFSIZE];
+	command_t cm_code;
+} user_req_t;
 
 
-       } else if (!strcmp(command, "s") || !strcmp(command, "start")) {
 
-           Game_loop();
+// return struct with command string and code
+static user_req_t
+get_user_input(void);
 
 
-//        } else if () {
-//        } else if () {
-//        } else if () {
+// prints help reference
+static void
+print_help_ref(void);
  
-        } else {                                                            // Unknown command
-           printf("Tic-Tac[~]: unknown command: %s. \nTry [H]elp to get command list.\n", command);
-        }
 
-        putchar('\n');
+int main(void)
+{
+	user_req_t req;
+	
+    printf(WELCOME_MSG);
 
-    }
+	for (;;) {
 
+		// get input from the user
+		req = get_user_input();
+
+		// process len exceptions
+		if (req.len == -1)
+			printf("EOF found. Exiting...\n");
+		else if (req.len == 0)
+			continue;
+
+		switch (req.cm_code) {
+
+		case C_EXIT:
+			printf("Bye...\n");
+			exit(EXIT_SUCCESS);
+		    break;
+
+		case C_HELP:
+			print_help_ref();
+			break;
+
+		case C_TICTAC:
+			Run_tictac();
+			break;
+
+		default:
+			printf("Unknown command\n Try \"help\"\n");
+			break;
+		}
+
+	}
+		
     return 0;
 }
 
 
+static user_req_t
+get_user_input(void)
+{
+	user_req_t req;
+
+	print_command_invite();
+
+	// get command from user and record len of them
+	req.len = Get_command(req.input);
+
+	// unknown command by default 
+	req.cm_code = -1;
+
+	// change code of command if command is avalible
+	for (int i=0; i<COMMANDS_COUNT; i++) {
+		if (!memcmp(command_arr[i], req.input, strlen(command_arr[i]))) {
+			req.cm_code = i;
+			break;
+	    }
+	}
+
+	return req;
+}
+
+
+static void
+print_help_ref(void)
+{
+	printf("\nHelp reference:\n");
+	printf("\t[command]decoding --> DO\n\n");
+
+	printf("exit   --> drop the programm\n");
+	printf("help   --> get help reference\n");
+	printf("tictac --> run tic-tac-toe game\n");
+	putchar('\n');
+} 
+
+
+static void
+print_command_invite(void)
+{
+	printf("\n    [~]: ");
+}

@@ -2,7 +2,7 @@
 
 #include "game.h"   // funcs
 
-int Game_loop()
+int Run_tictac()
 {
     int **matrix = Init_matrix();
     
