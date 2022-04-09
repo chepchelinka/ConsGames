@@ -1,8 +1,8 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 #include "game.h"   // funcs
 
-int Game_loop()
+int Run_tictac()
 {
     int **matrix = Init_matrix();
     
@@ -81,4 +81,14 @@ int Game_loop()
     return 0;
 }
 
+
+
+void Switch_player(char *player) 
+{
+    if (*player == P1) {
+        *player = P2;
+    } else {
+        *player = P1;
+    }
+}
 
